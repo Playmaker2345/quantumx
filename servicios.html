@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precios y Servicios | QuantumX</title>
+    <style>
+        :root { --p: #7b2cbf; --a: #ff3131; --bg: #050505; --c: #121212; --t: #fff; }
+        body { font-family: sans-serif; background: var(--bg); color: var(--t); margin: 0; padding: 20px; line-height: 1.4; }
+        
+        .header { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; }
+        .back-btn { color: var(--p); text-decoration: none; font-weight: bold; font-size: 1.2rem; }
+        
+        h1 { font-size: 1.5rem; color: var(--t); margin: 0; border-left: 4px solid var(--a); padding-left: 10px; }
+        h2 { color: var(--p); font-size: 1.2rem; margin-top: 30px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+        
+        .price-card { background: var(--c); padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 3px solid var(--p); }
+        .price-header { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 8px; }
+        .cost { color: var(--a); }
+        
+        ul { padding-left: 20px; color: #aaa; font-size: 0.85rem; }
+        li { margin-bottom: 5px; }
+
+        .note { font-size: 0.75rem; color: #666; font-style: italic; margin-top: 20px; text-align: center; }
+        .type-tag { font-size: 0.7rem; background: #222; padding: 2px 8px; border-radius: 4px; color: #eee; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <a href="index.html" class="back-btn">←</a>
+        <h1>Catálogo de Servicios</h1>
+    </div>
+
+    <!-- SECCIÓN PC Y LAPTOPS -->
+    <h2>Computadoras y Laptops</h2>
+    
+    <div class="price-card">
+        <div class="price-header"><span>Mantenimiento Básico</span> <span class="cost">9,000 CUP</span></div>
+        <ul>
+            <li>Limpieza con alcohol isopropílico al 96%</li>
+            <li>Limpieza profunda de RAM y microprocesador</li>
+            <li>Tratamiento de ventiladores y comprobación de voltajes</li>
+            <li>Limpieza de fuente y chasis</li>
+        </ul>
+    </div>
+
+    <div class="price-card">
+        <div class="price-header"><span>Mantenimiento Completo</span> <span class="cost">12,000 CUP</span></div>
+        <ul>
+            <li>Todo lo del básico + Reinstalación de Sistema (Windows/Linux)</li>
+            <li>Instalación de drivers actualizados</li>
+            <li>Suite Office y utilitarios básicos (WinRAR, Antivirus, etc.)</li>
+        </ul>
+    </div>
+
+    <div class="price-card">
+        <div class="price-header"><span>Reparación y Diagnóstico</span></div>
+        <p style="font-size:0.85rem; margin:5px 0; color:#ccc;">Diagnóstico exhaustivo de placa base.</p>
+        <div style="display:flex; justify-content: space-between; font-size:0.85rem;">
+            <span>Diagnóstico: <b class="cost">1,000 CUP</b></span>
+            <span>Reparación Estándar: <b class="cost">15,000 CUP</b></span>
+        </div>
+    </div>
+
+    <!-- SECCIÓN IMPRESORAS -->
+    <h2>Impresoras (Inkjet y Láser)</h2>
+    
+    <div class="price-card">
+        <div class="price-header"><span>Mantenimiento Preventivo</span> <span class="cost">54,000 CUP</span></div>
+        <p style="font-size:0.75rem; color:#888;">Equivalente a 120 USD</p>
+        <ul>
+            <li>Limpieza de sistema de arrastre y rodillos (Pickup Rollers)</li>
+            <li>Engrase de piñones con grasa de litio</li>
+            <li>Limpieza de sensores y cinta encoder</li>
+            <li><b>Inkjet:</b> Test de inyectores y purga de aire</li>
+            <li><b>Láser:</b> Limpieza de hilo de corona y depósitos de tóner</li>
+        </ul>
+    </div>
+
+    <div class="price-card">
+        <div class="price-header"><span>Reparación Correctiva</span> <span class="cost">50% Costo Equipo</span></div>
+        <ul>
+            <li>Desbloqueo de cabezales tapados (sumersión)</li>
+            <li>Reseteo de almohadillas y cambio de esponjas</li>
+            <li>Corrección de imagen fantasma y fallas de fusor (Láser)</li>
+        </ul>
+    </div>
+
+    <!-- SECCIÓN PERIFÉRICOS -->
+    <h2>Periféricos y Audio</h2>
+    
+    <div class="price-card" style="border-left-color: var(--a);">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:0.9rem;">
+            <div>Bocinas: <b class="cost">3,000 CUP</b></div>
+            <div>Mouse + Teclado: <b class="cost">5,000 CUP</b></div>
+            <div>Teclado Solo: <b class="cost">3,500 CUP</b></div>
+            <div>Mouse Solo: <b class="cost">1,500 CUP</b></div>
+        </div>
+    </div>
+
+    <p class="note">
+        * El costo de las piezas de repuesto no está incluido y dependerá del precio del mercado actual.<br>
+        * Todos los servicios incluyen garantía de funcionamiento.
+    </p>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="https://wa.me/5352822610" style="background:#25d366; color:white; text-decoration:none; padding:10px 20px; border-radius:5px; font-weight:bold; font-size:0.9rem;">RESERVAR TURNO</a>
+    </div>
+
+</body>
+</html>

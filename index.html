@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantumX | Reparaciones Electrónicas</title>
+    <style>
+        :root {
+            --primary: #7b2cbf;
+            --accent: #ff3131;
+            --bg: #050505;
+            --card: rgba(20, 20, 20, 0.9);
+            --text: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        /* Navegación */
+        nav {
+            position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.9);
+            padding: 12px 20px; display: flex; justify-content: space-between;
+            align-items: center; z-index: 1000; border-bottom: 1px solid var(--primary);
+        }
+        nav .brand { font-weight: 900; color: var(--primary); text-decoration: none; font-size: 1.2rem; }
+        .nav-links a { color: #ccc; text-decoration: none; font-size: 0.8rem; margin-left: 15px; }
+
+        /* HERO CON LA NUEVA IMAGEN DE FONDO */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            /* La imagen se coloca aquí con un gradiente para que el texto resalte */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)), 
+                        url('fondo.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efecto elegante al bajar */
+        }
+
+        .logo-container { width: 220px; height: 220px; margin-bottom: 15px; }
+        .main-logo { width: 100%; height: auto; filter: drop-shadow(0 0 15px var(--primary)); }
+
+        h1 { font-size: 3rem; letter-spacing: 4px; margin-bottom: 10px; text-shadow: 0 0 20px #000; }
+        .tagline { color: #ddd; font-size: 1.1rem; max-width: 600px; margin-bottom: 30px; text-shadow: 1px 1px 5px #000; }
+
+        /* Botones */
+        .btn {
+            display: inline-block; padding: 14px 35px; border-radius: 4px;
+            text-decoration: none; font-weight: bold; text-transform: uppercase;
+            font-size: 0.9rem; transition: 0.3s;
+        }
+        .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+
+        /* Secciones */
+        section { padding: 80px 20px; max-width: 1100px; margin: auto; }
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 2rem; color: var(--primary); }
+
+        /* Grid de Servicios */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .card { 
+            padding: 35px; border-radius: 15px; background: var(--card); 
+            border: 1px solid #333; text-align: center; cursor: pointer;
+            transition: 0.3s;
+        }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); background: #1a1a1a; }
+        .card svg { width: 45px; height: 45px; fill: var(--primary); margin-bottom: 15px; }
+        .card h3 { margin-bottom: 12px; }
+        .card p { color: #bbb; font-size: 0.9rem; }
+        .price-tag { display: block; margin-top: 15px; color: var(--accent); font-weight: bold; font-size: 0.8rem; }
+
+        /* Canal de WhatsApp */
+        #canal { 
+            text-align: center; background: rgba(123, 44, 191, 0.1); 
+            padding: 60px 20px; border-radius: 20px; border: 1px solid var(--primary);
+            margin: 40px auto; 
+        }
+
+        /* Footer */
+        footer { padding: 40px; text-align: center; color: #555; font-size: 0.8rem; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            header { background-attachment: scroll; } /* Mejor rendimiento en móvil */
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#inicio" class="brand">QUANTUMX</a>
+    <div class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#canal">Comunidad</a>
+        <a href="#contacto">Contacto</a>
+    </div>
+</nav>
+
+<header id="inicio">
+    <div class="logo-container">
+        <img src="logo-quantum.png" alt="Logo" class="main-logo">
+    </div>
+    <h1>QUANTUMX</h1>
+    <p class="tagline">Soluciones avanzadas en hardware, sonido y energía de litio.</p>
+    <a href="#servicios" class="btn btn-primary">VER CATÁLOGO</a>
+</header>
+
+<section id="servicios">
+    <h2 class="section-title">Especialidades Técnicas</h2>
+    <div class="grid">
+        <!-- Tarjeta que abre el segundo archivo de servicios.html -->
+        <div class="card" onclick="window.location.href='servicios.html'">
+            <svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+            <h3>Informática & Hardware</h3>
+            <p>Reparación de PC, Laptops e impresoras. Mantenimiento profundo con materiales de alta calidad.</p>
+            <span class="price-tag">[ VER PRECIOS DETALLADOS ]</span>
+        </div>
+
+       <!-- Tarjeta de Audio Pro que abre audio.html -->
+<div class="card" style="cursor: pointer;" onclick="window.location.href='audio.html'">
+    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+    <h3>Audio Profesional</h3>
+    <p>Reparación de amplificadores y baterías personalizadas.</p>
+    <span style="color:var(--accent); font-weight:bold; font-size:0.75rem; margin-top:10px; display:block;">[ TOCAR PARA VER PRECIOS ]</span>
+</div>
+
+      <!-- Tarjeta de Baterías que abre baterias.html -->
+<div class="card" style="cursor: pointer;" onclick="window.location.href='baterias.html'">
+    <svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+    <h3>Baterías de Litio</h3>
+    <p>Especialistas en Lámparas, Ventiladores y Baterías de alta potencia (LiFePO4).</p>
+    <span style="color:var(--accent); font-weight:bold; font-size:0.75rem; margin-top:10px; display:block;">[ TOCAR PARA VER PRECIOS ]</span>
+</div>
+    </div>
+</section>
+
+<section id="canal">
+    <h2 style="margin-bottom:15px">Únete a nuestro Canal</h2>
+    <p style="color:#bbb; margin-bottom:25px">Mira nuestras reparaciones en tiempo real y recibe tips de mantenimiento.</p>
+    <a href="https://whatsapp.com/channel/0029VbAY8q2FHWq5aC5rrj0x" class="btn btn-primary" target="_blank">ABRIR CANAL</a>
+</section>
+
+<section id="contacto" style="text-align:center">
+    <h2 class="section-title">¿Necesitas ayuda?</h2>
+    <p style="margin-bottom:30px">Estamos ubicados en Cárdenas, Matanzas. Atendemos de forma rápida y profesional.</p>
+    <a href="https://wa.me/5352822610" class="btn" style="background:#25d366; color:#fff">CHAT POR WHATSAPP</a>
+    <br><br>
+    <a href="https://maps.app.goo.gl/nvXboewN6fm8j2qb9" target="_blank" style="color:var(--primary); text-decoration:none; font-size:0.9rem">
+        📍 Ver ubicación en Google Maps
+    </a>
+</section>
+
+<footer>
+    <p>&copy; 2024 QUANTUMX - CÁRDENAS, CUBA</p>
+</footer>
+
+</body>
+</html>
