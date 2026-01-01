@@ -3,13 +3,13 @@
 <head>                
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuantumX | Reparaciones Electrónicas</title>
+    <title>QuantumX | Reparaciones y Tienda</title>
     <style>
         :root {
-           --primary: #7b2cbf;
+            --primary: #7b2cbf;
             --accent: #ff3131;
             --bg: #050505;
-            --card: #121212;
+            --card: rgba(18, 18, 18, 0.95);
             --text: #ffffff;
             --success: #25d366;
         }
@@ -17,74 +17,105 @@
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
-         font-family: -apple-system, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             overflow-x: hidden;
         }
 
-        /* Navegación */
+        /* --- NAVEGACIÓN --- */
         nav {
-            position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95);
-            padding: 15px 20px; display: flex; justify-content: space-between;
+            position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.9);
+            padding: 12px 20px; display: flex; justify-content: space-between;
             align-items: center; z-index: 1000; border-bottom: 1px solid var(--primary);
         }
-        nav .brand { font-weight: 900; color: var(--primary); text-decoration: none; font-size: 1.2rem; }
-        .nav-links a { color: #ccc; text-decoration: none; font-size: 0.8rem; margin-left: 15px; }
-
-         .btn-tienda {
-            background: var(--primary); color: white; border: none; padding: 8px 15px;
-            border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 0.8rem;
+        nav .brand { font-weight: 900; color: var(--primary); text-decoration: none; font-size: 1.1rem; }
+        
+        .nav-right { display: flex; align-items: center; gap: 15px; }
+        .btn-tienda {
+            background: var(--primary); color: white; border: none; padding: 7px 15px;
+            border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 0.8rem;
+            animation: pulse 2s infinite;
         }
 
-        /* MENÚ LATERAL DE PRODUCTOS (DERECHA) */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); box-shadow: 0 0 10px var(--primary); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- SIDEBAR DE PRODUCTOS --- */
         #tienda-sidebar {
-            position: fixed; top: 0; right: -100%; width: 350px; height: 100%;
-            background: #0a0a0a; z-index: 2000; transition: 0.4s;
-            box-shadow: -5px 0 20px rgba(0,0,0,0.8);
+            position: fixed; top: 0; right: -100%; width: 320px; height: 100%;
+            background: #0a0a0a; z-index: 2000; transition: 0.4s ease-in-out;
             display: flex; flex-direction: column; padding: 20px;
             border-left: 2px solid var(--primary);
         }
         #tienda-sidebar.active { right: 0; }
         
-        .close-sidebar { color: var(--accent); cursor: pointer; font-size: 1.5rem; text-align: right; margin-bottom: 20px; font-weight: bold;}
-        .sidebar-title { border-bottom: 1px solid var(--primary); padding-bottom: 10px; margin-bottom: 20px; text-transform: uppercase; font-size: 1.2rem; }
+        .close-sidebar { color: var(--accent); cursor: pointer; font-size: 2rem; text-align: right; font-weight: bold;}
+        .sidebar-title { border-bottom: 1px solid var(--primary); padding-bottom: 10px; margin-bottom: 20px; text-transform: uppercase; font-size: 1.1rem; }
 
-        /* CONTENIDO DE PRODUCTOS VERTICAL */
-        .products-container { overflow-y: auto; flex: 1; }
+        .products-container { overflow-y: auto; flex: 1; scrollbar-width: thin; }
+        .product-card { background: var(--card); border-radius: 10px; padding: 15px; margin-bottom: 20px; border: 1px solid #222; }
+        .product-card img { width: 100%; border-radius: 8px; margin-bottom: 12px; }
+        .product-name { font-size: 1rem; font-weight: bold; display: block; margin-bottom: 5px; }
+        .product-price { color: var(--success); font-weight: bold; font-size: 1.2rem; display: block; margin-bottom: 10px; }
         
-        .product-card {
-            background: var(--card); border-radius: 10px; padding: 15px; margin-bottom: 20px;
-            border: 1px solid #222;
-        }
-        .product-card img { width: 100%; border-radius: 8px; margin-bottom: 15px; }
-        .product-price { color: var(--success); font-weight: bold; font-size: 1.3rem; margin-bottom: 10px; display: block; }
-        .product-name { font-size: 1.1rem; margin-bottom: 10px; color: #fff; }
-        
-        .features { font-size: 0.75rem; color: #bbb; padding-left: 15px; margin-bottom: 15px;}
-        .features li { margin-bottom: 5px; }
-        
+        .features { font-size: 0.7rem; color: #aaa; padding-left: 15px; margin-bottom: 15px; list-style-type: square; }
         .btn-comprar {
             width: 100%; background: var(--success); color: #000; font-weight: bold;
-            padding: 10px; border: none; border-radius: 5px; cursor: pointer; text-decoration: none;
-            display: inline-block; text-align: center;
+            padding: 10px; border: none; border-radius: 4px; cursor: pointer; 
+            text-decoration: none; display: inline-block; text-align: center; font-size: 0.85rem;
         }
 
-          /* SECCIÓN SERVICIOS */
-        section { padding: 80px 20px; max-width: 1000px; margin: auto; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { padding: 30px; border-radius: 12px; background: #111; border: 1px solid #222; text-align: center; cursor: pointer; }
-        .card:hover { border-color: var(--primary); }
-        .card svg { width: 40px; height: 40px; fill: var(--primary); margin-bottom: 15px; }
+        /* --- HEADER HERO --- */
+        header {
+            height: 100vh; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; text-align: center; padding: 20px;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.9)), url('fondo.jpg');
+            background-size: cover; background-position: center; background-attachment: fixed;
+        }
 
-        /* OVERLAY (Para oscurecer fondo al abrir menú) */
+        .logo-container { width: 220px; margin-bottom: 15px; }
+        .main-logo { width: 100%; height: auto; filter: drop-shadow(0 0 10px var(--primary)); }
+        header h1 { font-size: 3rem; letter-spacing: 4px; text-shadow: 0 0 15px #000; margin-bottom: 10px; }
+        .tagline { color: #ccc; font-size: 1.1rem; max-width: 600px; margin-bottom: 25px; }
+
+        /* --- GRID SERVICIOS --- */
+        section { padding: 80px 20px; max-width: 1100px; margin: auto; }
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 2rem; color: var(--primary); font-weight: 900; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        
+        .card { 
+            padding: 30px; border-radius: 12px; background: var(--card); border: 1px solid #222; 
+            text-align: center; transition: 0.3s; cursor: pointer;
+        }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .card svg { width: 45px; height: 45px; fill: var(--primary); margin-bottom: 15px; }
+        .card h3 { margin-bottom: 10px; font-size: 1.2rem; }
+        .card p { color: #bbb; font-size: 0.9rem; margin-bottom: 10px; }
+        .price-tag { font-size: 0.8rem; color: var(--accent); font-weight: bold; }
+
+        /* --- BOTONES Y OTROS --- */
         #overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); display: none; z-index: 1500;
+            background: rgba(0,0,0,0.8); display: none; z-index: 1500;
         }
         #overlay.active { display: block; }
 
-        @media (max-width: 400px) { #tienda-sidebar { width: 90%; } }
+        .canal-btn {
+            background: rgba(123, 44, 191, 0.2); border: 1px solid var(--primary);
+            color: white; padding: 20px; text-align: center; border-radius: 10px; margin-top: 40px;
+        }
+
+        footer { padding: 40px; text-align: center; color: #555; font-size: 0.75rem; border-top: 1px solid #111; }
+
+        @media (max-width: 600px) {
+            header { background-attachment: scroll; }
+            header h1 { font-size: 2.2rem; }
+            #tienda-sidebar { width: 85%; }
+        }
     </style>
 </head>
 <body>
@@ -92,217 +123,100 @@
     <!-- NAV -->
     <nav>
         <a href="#inicio" class="brand">QUANTUMX</a>
-        <button class="btn-tienda" onclick="toggleSidebar()">🛒 TIENDA</button>
+        <div class="nav-right">
+            <button class="btn-tienda" onclick="toggleSidebar()">🛒 TIENDA</button>
+        </div>
     </nav>
 
-    <!-- SIDEBAR DE PRODUCTOS -->
+    <!-- SIDEBAR PRODUCTOS -->
     <div id="overlay" onclick="toggleSidebar()"></div>
     <aside id="tienda-sidebar">
         <div class="close-sidebar" onclick="toggleSidebar()">×</div>
-        <h2 class="sidebar-title">Nuestros Productos</h2>
-        
+        <h2 class="sidebar-title">Gadgets & Tecnología</h2>
         <div class="products-container">
-            <!-- Producto: Lenovo Thinkplus -->
             <div class="product-card">
                 <img src="lenovo.png" alt="Lenovo ThinkPlus">
-                <span class="product-name">Lenovo ThinkPlus - BT 5.3</span>
+                <span class="product-name">Lenovo ThinkPlus (Original)</span>
                 <span class="product-price">5,000 CUP</span>
-                
                 <ul class="features">
-                    <li>Bluetooth 5.3 de conexión ultra estable.</li>
-                    <li>Micrófono dual con reducción de ruido activa.</li>
-                    <li>Rango: 20 Hz - 200,000 Hz.</li>
-                    <li>Duración: 4h (Híbrida: hasta 10h con estuche).</li>
-                    <li>Carga rápida USB Tipo-C (1.5 horas).</li>
-                    <li>Certificación IPX-5: Resistente a sudor y lluvia.</li>
-                    <li>Control táctil con almohadillas ajustables.</li>
+                    <li>Bluetooth 5.3 última generación.</li>
+                    <li>Micro Dual + Reducción de ruido.</li>
+                    <li>Resistencia IPX-5 (Sudor/Lluvia).</li>
+                    <li>Hasta 10h de música total.</li>
+                    <li>Carga Tipo-C ultra rápida.</li>
                 </ul>
-                
-                <a href="https://wa.me/5352822610?text=Hola! Quiero comprar los Audífonos Lenovo ThinkPlus de 5000 CUP" class="btn-comprar" target="_blank">ME INTERESA</a>
+                <a href="https://wa.me/5352822610?text=Hola QuantumX! Estoy interesado en los audífonos Lenovo ThinkPlus de 5000 CUP" class="btn-comprar" target="_blank">ME INTERESA</a>
             </div>
-            
-            <!-- Aquí puedes añadir más productos con el mismo diseño -->
         </div>
     </aside>
 
     <!-- INICIO -->
     <header id="inicio">
-        <img src="logo-quantum.png" alt="Logo" class="main-logo">
-        <h1 style="letter-spacing: 2px;">QUANTUMX</h1>
-        <p style="color: #aaa;">Electrónica, Tienda y Soluciones Energéticas</p>
-        <a href="#servicios" style="color:var(--primary); text-decoration:none; margin-top:20px; font-weight:bold; font-size:0.9rem;">↓↓ EXPLORAR SERVICIOS ↓↓</a>
+        <div class="logo-container">
+            <img src="logo-quantum.png" alt="Logo QuantumX" class="main-logo">
+        </div>
+        <h1>QUANTUMX</h1>
+        <p class="tagline">Soluciones avanzadas en informática, audio pro y estaciones de energía.</p>
+        <a href="#servicios" style="color:var(--primary); text-decoration:none; font-weight:bold; font-size:0.8rem; margin-top:20px;">[ EXPLORAR SERVICIOS ]</a>
     </header>
 
+    <!-- SERVICIOS -->
     <section id="servicios">
+        <h2 class="section-title">Especialidades Técnicas</h2>
         <div class="grid">
             <div class="card" onclick="window.location.href='servicios.html'">
-                <svg viewBox="0 0 24 24"><path d="M20 18H4v-10h16v10zm2-12h-20v14h20v-14zM0 0h24v24h-24z" fill="none"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
                 <h3>Informática</h3>
-                <p>Ver precios de reparación PC/Laptop</p>
+                <p>PC, Laptops e impresoras profesionales.</p>
+                <span class="price-tag">[ VER PRECIOS ]</span>
             </div>
+
             <div class="card" onclick="window.location.href='audio.html'">
                 <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
                 <h3>Audio Pro</h3>
-                <p>Ver precios de Amplificadores</p>
+                <p>Amplificadores y baterías para bocinas.</p>
+                <span class="price-tag">[ VER PRECIOS ]</span>
             </div>
+
+            <div class="card" onclick="window.location.href='baterias.html'">
+                <svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+                <h3>Baterías Litio</h3>
+                <p>Reparación avanzada de LiFePO4 y Motorinas.</p>
+                <span class="price-tag">[ VER PRECIOS ]</span>
+            </div>
+
+            <div class="card" onclick="window.location.href='energia.html'">
+                <svg viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71L12 2z"/></svg>
+                <h3>Inversores</h3>
+                <p>Soporte técnico EcoFlow y Plantas portátiles.</p>
+                <span class="price-tag">[ VER PRECIOS ]</span>
+            </div>
+        </div>
+
+        <div class="canal-btn">
+            <h3>¿Quieres ver cómo trabajamos?</h3>
+            <p style="margin-bottom:15px; color:#aaa; font-size:0.9rem;">Únete a nuestra comunidad en WhatsApp.</p>
+            <a href="https://whatsapp.com/channel/0029VbAY8q2FHWq5aC5rrj0x" target="_blank" style="background:var(--primary); color:white; padding:10px 25px; border-radius:5px; text-decoration:none; font-weight:bold; font-size:0.8rem;">ABRIR CANAL</a>
         </div>
     </section>
 
-    <!-- SCRIPT PARA EL MENÚ -->
+    <!-- CONTACTO -->
+    <section id="contacto" style="text-align:center;">
+        <p style="color:#aaa;">📍 Ubicación: Trinidad, Sancti Spíritus</p>
+        <p style="margin:20px 0;">Estamos listos para darte la solución técnica que necesitas.</p>
+        <a href="https://wa.me/5352822610" style="color:var(--success); font-weight:bold; text-decoration:none; font-size:1.2rem;">WhatsApp: +53 52822610</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 QUANTUMX REPARACIONES - CALIDAD Y TECNOLOGÍA</p>
+    </footer>
+
+    <!-- LOGICA DEL SIDEBAR -->
     <script>
         function toggleSidebar() {
             document.getElementById('tienda-sidebar').classList.toggle('active');
             document.getElementById('overlay').classList.toggle('active');
         }
-        /* HEADER HERO */
-        header {
-            height: 80vh; display: flex; flex-direction: column; justify-content: center;
-            align-items: center; text-align: center; padding: 20px;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('fondo-taller.jpg');
-            background-size: cover; background-position: center;
-        }
-
-        .main-logo { width: 180px; filter: drop-shadow(0 0 10px var(--primary)); margin-bottom: 10px; }
-        /* HERO CON LA NUEVA IMAGEN DE FONDO */
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            /* La imagen se coloca aquí con un gradiente para que el texto resalte */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)), 
-                        url('fondo.jpg'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Efecto elegante al bajar */
-        }
-
-        .logo-container { width: 220px; height: 220px; margin-bottom: 15px; }
-        .main-logo { width: 100%; height: auto; filter: drop-shadow(0 0 15px var(--primary)); }
-
-        h1 { font-size: 3rem; letter-spacing: 4px; margin-bottom: 10px; text-shadow: 0 0 20px #000; }
-        .tagline { color: #ddd; font-size: 1.1rem; max-width: 600px; margin-bottom: 30px; text-shadow: 1px 1px 5px #000; }
-
-        /* Botones */
-        .btn {
-            display: inline-block; padding: 14px 35px; border-radius: 4px;
-            text-decoration: none; font-weight: bold; text-transform: uppercase;
-            font-size: 0.9rem; transition: 0.3s;
-        }
-        .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-
-        /* Secciones */
-        section { padding: 80px 20px; max-width: 1100px; margin: auto; }
-        .section-title { text-align: center; margin-bottom: 50px; font-size: 2rem; color: var(--primary); }
-
-        /* Grid de Servicios */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card { 
-            padding: 35px; border-radius: 15px; background: var(--card); 
-            border: 1px solid #333; text-align: center; cursor: pointer;
-            transition: 0.3s;
-        }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); background: #1a1a1a; }
-        .card svg { width: 45px; height: 45px; fill: var(--primary); margin-bottom: 15px; }
-        .card h3 { margin-bottom: 12px; }
-        .card p { color: #bbb; font-size: 0.9rem; }
-        .price-tag { display: block; margin-top: 15px; color: var(--accent); font-weight: bold; font-size: 0.8rem; }
-
-        /* Canal de WhatsApp */
-        #canal { 
-            text-align: center; background: rgba(123, 44, 191, 0.1); 
-            padding: 60px 20px; border-radius: 20px; border: 1px solid var(--primary);
-            margin: 40px auto; 
-        }
-
-        /* Footer */
-        footer { padding: 40px; text-align: center; color: #555; font-size: 0.8rem; }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-            header { background-attachment: scroll; } /* Mejor rendimiento en móvil */
-        }
-    </style>
-</head>
-<body>
-
-<nav>
-    <a href="#inicio" class="brand">QUANTUMX</a>
-    <div class="nav-links">
-        <a href="#servicios">Servicios</a>
-        <a href="#canal">Comunidad</a>
-        <a href="#contacto">Contacto</a>
-    </div>
-</nav>
-
-<header id="inicio">
-    <div class="logo-container">
-        <img src="logo-quantum.png" alt="Logo" class="main-logo">
-    </div>
-    <h1>QUANTUMX</h1>
-    <p class="tagline">Soluciones avanzadas en hardware, sonido y energía de litio.</p>
-    <a href="#servicios" class="btn btn-primary">VER CATÁLOGO</a>
-</header>
-
-<section id="servicios">
-    <h2 class="section-title">Especialidades Técnicas</h2>
-    <div class="grid">
-        <!-- Tarjeta que abre el segundo archivo de servicios.html -->
-        <div class="card" onclick="window.location.href='servicios.html'">
-            <svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
-            <h3>Informática & Hardware</h3>
-            <p>Reparación de PC, Laptops e impresoras. Mantenimiento profundo con materiales de alta calidad.</p>
-            <span class="price-tag">[ VER PRECIOS DETALLADOS ]</span>
-        </div>
-
-       <!-- Tarjeta de Audio Pro que abre audio.html -->
-<div class="card" style="cursor: pointer;" onclick="window.location.href='audio.html'">
-    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-    <h3>Audio Profesional</h3>
-    <p>Reparación de amplificadores y baterías personalizadas.</p>
-    <span style="color:var(--accent); font-weight:bold; font-size:0.75rem; margin-top:10px; display:block;">[ TOCAR PARA VER PRECIOS ]</span>
-</div>
-
-      <!-- Tarjeta de Baterías que abre baterias.html -->
-<div class="card" style="cursor: pointer;" onclick="window.location.href='baterias.html'">
-    <svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
-    <h3>Baterías de Litio</h3>
-    <p>Especialistas en Lámparas, Ventiladores y Baterías de alta potencia (LiFePO4).</p>
-    <span style="color:var(--accent); font-weight:bold; font-size:0.75rem; margin-top:10px; display:block;">[ TOCAR PARA VER PRECIOS ]</span>
-</div>
-<!-- Añade esta cuarta tarjeta a tu grid en index.html -->
-<div class="card" style="cursor: pointer;" onclick="window.location.href='energia.html'">
-    <svg viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71L12 2z"/></svg>
-    <h3>Inversores & Energía</h3>
-    <p>Servicio técnico a Inversores y estaciones de carga (EcoFlow/Portátiles).</p>
-    <span style="color:var(--accent); font-weight:bold; font-size:0.75rem; margin-top:10px; display:block;">[ VER PRECIOS Y REPUESTOS ]</span>
-</div>
-        
-    </div>
-</section>
-
-<section id="canal">
-    <h2 style="margin-bottom:15px">Únete a nuestro Canal</h2>
-    <p style="color:#bbb; margin-bottom:25px">Mira nuestras reparaciones en tiempo real y recibe tips de mantenimiento.</p>
-    <a href="https://whatsapp.com/channel/0029VbAY8q2FHWq5aC5rrj0x" class="btn btn-primary" target="_blank">ABRIR CANAL</a>
-</section>
-
-<section id="contacto" style="text-align:center">
-    <h2 class="section-title">¿Necesitas ayuda?</h2>
-    <p style="margin-bottom:30px">Estamos ubicados en Trinidad, Santic Spiritus. Atendemos de forma rápida y profesional.</p>
-    <a href="https://wa.me/5352822610" class="btn" style="background:#25d366; color:#fff">CHAT POR WHATSAPP</a>
-    <br><br>
-    <a href="https://maps.app.goo.gl/nvXboewN6fm8j2qb9" target="_blank" style="color:var(--primary); text-decoration:none; font-size:0.9rem">
-        📍 Ver ubicación en Google Maps
-    </a>
-</section>
-
-<footer>
-    <p>&copy; 2024 QUANTUMX - CÁRDENAS, CUBA</p>
-</footer>
-
+    </script>
 </body>
 </html>
