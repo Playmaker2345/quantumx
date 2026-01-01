@@ -6,31 +6,163 @@
     <title>QuantumX | Reparaciones Electrónicas</title>
     <style>
         :root {
-            --primary: #7b2cbf;
+           --primary: #7b2cbf;
             --accent: #ff3131;
             --bg: #050505;
-            --card: rgba(20, 20, 20, 0.9);
+            --card: #121212;
             --text: #ffffff;
+            --success: #25d366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         font-family: -apple-system, sans-serif;
             background-color: var(--bg);
             color: var(--text);
-            line-height: 1.5;
+            overflow-x: hidden;
         }
 
         /* Navegación */
         nav {
-            position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.9);
-            padding: 12px 20px; display: flex; justify-content: space-between;
+            position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95);
+            padding: 15px 20px; display: flex; justify-content: space-between;
             align-items: center; z-index: 1000; border-bottom: 1px solid var(--primary);
         }
         nav .brand { font-weight: 900; color: var(--primary); text-decoration: none; font-size: 1.2rem; }
         .nav-links a { color: #ccc; text-decoration: none; font-size: 0.8rem; margin-left: 15px; }
 
+         .btn-tienda {
+            background: var(--primary); color: white; border: none; padding: 8px 15px;
+            border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 0.8rem;
+        }
+
+        /* MENÚ LATERAL DE PRODUCTOS (DERECHA) */
+        #tienda-sidebar {
+            position: fixed; top: 0; right: -100%; width: 350px; height: 100%;
+            background: #0a0a0a; z-index: 2000; transition: 0.4s;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.8);
+            display: flex; flex-direction: column; padding: 20px;
+            border-left: 2px solid var(--primary);
+        }
+        #tienda-sidebar.active { right: 0; }
+        
+        .close-sidebar { color: var(--accent); cursor: pointer; font-size: 1.5rem; text-align: right; margin-bottom: 20px; font-weight: bold;}
+        .sidebar-title { border-bottom: 1px solid var(--primary); padding-bottom: 10px; margin-bottom: 20px; text-transform: uppercase; font-size: 1.2rem; }
+
+        /* CONTENIDO DE PRODUCTOS VERTICAL */
+        .products-container { overflow-y: auto; flex: 1; }
+        
+        .product-card {
+            background: var(--card); border-radius: 10px; padding: 15px; margin-bottom: 20px;
+            border: 1px solid #222;
+        }
+        .product-card img { width: 100%; border-radius: 8px; margin-bottom: 15px; }
+        .product-price { color: var(--success); font-weight: bold; font-size: 1.3rem; margin-bottom: 10px; display: block; }
+        .product-name { font-size: 1.1rem; margin-bottom: 10px; color: #fff; }
+        
+        .features { font-size: 0.75rem; color: #bbb; padding-left: 15px; margin-bottom: 15px;}
+        .features li { margin-bottom: 5px; }
+        
+        .btn-comprar {
+            width: 100%; background: var(--success); color: #000; font-weight: bold;
+            padding: 10px; border: none; border-radius: 5px; cursor: pointer; text-decoration: none;
+            display: inline-block; text-align: center;
+        }
+
+          /* SECCIÓN SERVICIOS */
+        section { padding: 80px 20px; max-width: 1000px; margin: auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { padding: 30px; border-radius: 12px; background: #111; border: 1px solid #222; text-align: center; cursor: pointer; }
+        .card:hover { border-color: var(--primary); }
+        .card svg { width: 40px; height: 40px; fill: var(--primary); margin-bottom: 15px; }
+
+        /* OVERLAY (Para oscurecer fondo al abrir menú) */
+        #overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); display: none; z-index: 1500;
+        }
+        #overlay.active { display: block; }
+
+        @media (max-width: 400px) { #tienda-sidebar { width: 90%; } }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#inicio" class="brand">QUANTUMX</a>
+        <button class="btn-tienda" onclick="toggleSidebar()">🛒 TIENDA</button>
+    </nav>
+
+    <!-- SIDEBAR DE PRODUCTOS -->
+    <div id="overlay" onclick="toggleSidebar()"></div>
+    <aside id="tienda-sidebar">
+        <div class="close-sidebar" onclick="toggleSidebar()">×</div>
+        <h2 class="sidebar-title">Nuestros Productos</h2>
+        
+        <div class="products-container">
+            <!-- Producto: Lenovo Thinkplus -->
+            <div class="product-card">
+                <img src="lenovo.png" alt="Lenovo ThinkPlus">
+                <span class="product-name">Lenovo ThinkPlus - BT 5.3</span>
+                <span class="product-price">5,000 CUP</span>
+                
+                <ul class="features">
+                    <li>Bluetooth 5.3 de conexión ultra estable.</li>
+                    <li>Micrófono dual con reducción de ruido activa.</li>
+                    <li>Rango: 20 Hz - 200,000 Hz.</li>
+                    <li>Duración: 4h (Híbrida: hasta 10h con estuche).</li>
+                    <li>Carga rápida USB Tipo-C (1.5 horas).</li>
+                    <li>Certificación IPX-5: Resistente a sudor y lluvia.</li>
+                    <li>Control táctil con almohadillas ajustables.</li>
+                </ul>
+                
+                <a href="https://wa.me/5352822610?text=Hola! Quiero comprar los Audífonos Lenovo ThinkPlus de 5000 CUP" class="btn-comprar" target="_blank">ME INTERESA</a>
+            </div>
+            
+            <!-- Aquí puedes añadir más productos con el mismo diseño -->
+        </div>
+    </aside>
+
+    <!-- INICIO -->
+    <header id="inicio">
+        <img src="logo-quantum.png" alt="Logo" class="main-logo">
+        <h1 style="letter-spacing: 2px;">QUANTUMX</h1>
+        <p style="color: #aaa;">Electrónica, Tienda y Soluciones Energéticas</p>
+        <a href="#servicios" style="color:var(--primary); text-decoration:none; margin-top:20px; font-weight:bold; font-size:0.9rem;">↓↓ EXPLORAR SERVICIOS ↓↓</a>
+    </header>
+
+    <section id="servicios">
+        <div class="grid">
+            <div class="card" onclick="window.location.href='servicios.html'">
+                <svg viewBox="0 0 24 24"><path d="M20 18H4v-10h16v10zm2-12h-20v14h20v-14zM0 0h24v24h-24z" fill="none"/></svg>
+                <h3>Informática</h3>
+                <p>Ver precios de reparación PC/Laptop</p>
+            </div>
+            <div class="card" onclick="window.location.href='audio.html'">
+                <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                <h3>Audio Pro</h3>
+                <p>Ver precios de Amplificadores</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCRIPT PARA EL MENÚ -->
+    <script>
+        function toggleSidebar() {
+            document.getElementById('tienda-sidebar').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+        /* HEADER HERO */
+        header {
+            height: 80vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; padding: 20px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('fondo-taller.jpg');
+            background-size: cover; background-position: center;
+        }
+
+        .main-logo { width: 180px; filter: drop-shadow(0 0 10px var(--primary)); margin-bottom: 10px; }
         /* HERO CON LA NUEVA IMAGEN DE FONDO */
         header {
             height: 100vh;
