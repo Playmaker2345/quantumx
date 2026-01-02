@@ -130,26 +130,30 @@
 
     <!-- SIDEBAR PRODUCTOS -->
     <div id="overlay" onclick="toggleSidebar()"></div>
-    <aside id="tienda-sidebar">
-        <div class="close-sidebar" onclick="toggleSidebar()">×</div>
-        <h2 class="sidebar-title">Gadgets & Tecnología</h2>
-        <div class="products-container">
-            <div class="product-card">
-                <img src="lenovo.png" alt="Lenovo ThinkPlus">
-                <span class="product-name">Lenovo ThinkPlus (Original)</span>
-                <span class="product-price">5,000 CUP</span>
-                <ul class="features">
-                    <li>Bluetooth 5.3 última generación.</li>
-                    <li>Micro Dual + Reducción de ruido.</li>
-                    <li>Resistencia IPX-5 (Sudor/Lluvia).</li>
-                    <li>Hasta 10h de música total.</li>
-                    <li>Carga Tipo-C ultra rápida.</li>
-                </ul>
-                <a href="https://wa.me/5352822610?text=Hola QuantumX! Estoy interesado en los audífonos Lenovo ThinkPlus de 5000 CUP" class="btn-comprar" target="_blank">ME INTERESA</a>
-            </div>
-        </div>
-    </aside>
+   <!-- Busca en tu index.html la etiqueta <aside id="tienda-sidebar"> y cámbiala por esta: -->
 
+<aside id="tienda-sidebar">
+    <div class="close-sidebar" onclick="toggleSidebar()">×</div>
+    <h2 class="sidebar-title">Nuestro Catálogo</h2>
+    
+    <div class="products-container">
+        <!-- CATEGORÍAS -->
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            
+            <a href="tienda.html" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; background: #1a1a1a; padding: 20px; border-radius: 8px; border-left: 4px solid var(--primary); color: white; transition: 0.3s;" 
+               onmouseover="this.style.background='#222'" onmouseout="this.style.background='#1a1a1a'">
+                <span style="font-family: 'Orbitron', sans-serif; font-weight: bold; font-size: 1.1rem;">ELECTRONICA</span>
+                <span style="color: var(--primary);">→</span>
+            </a>
+            
+            <p style="font-size: 0.7rem; color: #555; text-align: center; margin-top: 10px;">Próximamente más categorías disponibles...</p>
+        </div>
+    </div>
+    
+    <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid #222; text-align: center;">
+        <p style="font-size: 0.7rem; color: #777;">Trinidad, Sancti Spíritus</p>
+    </div>
+</aside>
     <!-- INICIO -->
     <header id="inicio">
         <div class="logo-container">
