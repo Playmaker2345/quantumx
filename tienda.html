@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrónica | QuantumX Shop</title>
+    <style>
+        :root {
+            --primary: #7b2cbf;
+            --accent: #ff3131;
+            --bg: #050505;
+            --card: #121212;
+            --text: #ffffff;
+            --success: #25d366;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(0,0,0,0.9);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid var(--primary);
+        }
+
+        .back-btn { color: var(--primary); text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+
+        h1 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; border-left: 4px solid var(--accent); padding-left: 10px; }
+
+        .container { padding: 40px 10%; max-width: 1300px; margin: auto; }
+
+        /* GRID DE PRODUCTOS EN CUADROS */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-item {
+            background: var(--card);
+            border: 1px solid #222;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.4s ease;
+        }
+
+        .product-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(123, 44, 191, 0.2);
+        }
+
+        .product-img-box {
+            width: 100%;
+            height: 320px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .product-img-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Para que la calidad del producto no se corte */
+        }
+
+        .info { padding: 25px; }
+
+        .price {
+            color: var(--success);
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .features {
+            font-size: 0.85rem;
+            color: #ccc;
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .features li {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .features li::before {
+            content: "•";
+            color: var(--primary);
+            position: absolute; left: 0;
+            font-weight: bold;
+        }
+
+        .btn-order {
+            display: block;
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-order:hover {
+            background: #6a21a5;
+            letter-spacing: 1px;
+        }
+
+        .footer-shop {
+            margin-top: 60px;
+            padding: 60px 20px;
+            background: rgba(123, 44, 191, 0.05);
+            text-align: center;
+            border-radius: 20px;
+            border: 1px dashed var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 5%; }
+            .product-img-box { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="back-btn">← INICIO</a>
+        <h1>Catálogo: Electrónica</h1>
+        <div style="width: 50px;"></div> <!-- Equilibrio visual -->
+    </header>
+
+    <div class="container">
+        
+        <div class="product-grid">
+
+            <!-- PRODUCTO 1: LENOVO -->
+            <div class="product-item">
+                <div class="product-img-box">
+                    <img src="lenovo.png" alt="Lenovo ThinkPlus Original">
+                </div>
+                <div class="info">
+                    <h2 style="margin-bottom: 5px; font-size: 1.4rem;">Lenovo ThinkPlus - BT 5.3</h2>
+                    <span style="color: #666; font-size: 0.8rem; margin-bottom: 15px; display: block;">Cod: QX-001 | Original de Fábrica</span>
+                    
+                    <span class="price">5,000 CUP</span>
+
+                    <ul class="features">
+                        <li><b>Bluetooth 5.3:</b> Conexión ultra estable y rápida.</li>
+                        <li><b>Audio de Alta Fidelidad:</b> Reducción activa de ruido para llamadas.</li>
+                        <li><b>Frecuencia:</b> Rango extendido de 20Hz hasta 200,000Hz.</li>
+                        <li><b>Batería Pro:</b> 4h uso continuo (10h con estuche 250mAh).</li>
+                        <li><b>Carga Moderna:</b> Puerto USB Tipo-C (1.5h carga total).</li>
+                        <li><b>IPX-5:</b> Resistente a sudor, salpicaduras y lluvia intensa.</li>
+                        <li><b>Control Táctil:</b> Ajuste cómodo con 3 tamaños de almohadillas.</li>
+                    </ul>
+
+                    <a href="https://wa.me/5352822610?text=Hola QuantumX! Me interesa el Lenovo ThinkPlus del catálogo electrónico" class="btn-order">ENCARGAR POR WHATSAPP</a>
+                </div>
+            </div>
+
+            <!-- Puedes duplicar el bloque de arriba para añadir más productos -->
+
+        </div>
+
+        <!-- PIE DE PAGINA TIENDA -->
+        <div class="footer-shop">
+            <h3 style="color: var(--primary); margin-bottom: 10px;">¿Buscas algo diferente?</h3>
+            <p style="color: #aaa; margin-bottom: 25px; font-size: 0.9rem;">Si no ves el equipo que buscas, nosotros podemos ayudarte a importarlo o diagnosticar el tuyo.</p>
+            <a href="https://wa.me/5352822610" style="color: var(--success); font-weight: bold; font-size: 1.1rem; text-decoration: none; border: 1px solid var(--success); padding: 10px 20px; border-radius: 50px;">HABLAR CON UN ESPECIALISTA</a>
+        </div>
+
+    </div>
+
+    <footer style="text-align: center; padding: 40px; color: #444; font-size: 0.8rem;">
+        QUANTUMX SOLUTIONS - Trinidad, Sancti Spíritus, Cuba
+    </footer>
+
+</body>
+</html>
